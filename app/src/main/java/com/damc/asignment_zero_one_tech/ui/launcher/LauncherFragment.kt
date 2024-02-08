@@ -1,11 +1,7 @@
 package com.damc.asignment_zero_one_tech.ui.launcher
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.damc.asignment_zero_one_tech.R
 import com.damc.asignment_zero_one_tech.databinding.FragmentLauncherBinding
 import com.damc.asignment_zero_one_tech.ui.BaseFragment
@@ -22,7 +18,18 @@ class LauncherFragment : BaseFragment<FragmentLauncherBinding, LauncherViewModel
         }
 
     override fun onReady(savedInstanceState: Bundle?) {
+        requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
 
+    fun onClickRegister(view: View) {
+        viewModel.loginToRegister()
+    }
+
+    fun onClickLogin(view: View) {
+        viewModel.validateInputs(
+            binding.etUsername.text.toString(),
+            binding.etPassword.text.toString(), requireContext()
+        )
     }
 
 

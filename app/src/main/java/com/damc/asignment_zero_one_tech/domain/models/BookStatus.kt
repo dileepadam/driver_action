@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "book_status")
 data class BookStatus(
     @ColumnInfo(name = "userId")
     var userID: Int,

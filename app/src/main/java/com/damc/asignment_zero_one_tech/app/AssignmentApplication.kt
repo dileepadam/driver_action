@@ -2,11 +2,14 @@ package com.damc.asignment_zero_one_tech.app
 
 import android.app.Application
 import com.damc.asignment_zero_one_tech.di.appModule
+import com.damc.asignment_zero_one_tech.domain.models.Users
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 class AssignmentApplication : Application() {
+
+    lateinit var user: Users
 
     override fun onCreate() {
         super.onCreate()
@@ -17,4 +20,14 @@ class AssignmentApplication : Application() {
             modules(appModule)
         }
     }
+
+    fun setLoginUser(users: Users) {
+        user = users
+    }
+
+    fun getLoginUser(): Users {
+        return user
+    }
+
+
 }
