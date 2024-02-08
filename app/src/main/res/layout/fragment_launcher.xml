@@ -16,13 +16,23 @@
             type="com.damc.asignment_zero_one_tech.ui.launcher.LauncherFragment" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
         android:background="@color/white">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:text="Helli Zero One Tech">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </TextView>
+    </LinearLayout>
+
 
 </layout>
 

@@ -1,16 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Asignment_zero_one_tech" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Theme.ZeroOneTechTheme" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/accent</item> <!-- Using the accent color as the primary color -->
+        <item name="colorPrimaryVariant">@color/navigation</item> <!-- Using the navigation color as the primary variant -->
+        <item name="colorOnPrimary">@color/white</item> <!-- Text color on primary background -->
+
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/background</item> <!-- Using the background color as the secondary color -->
+        <item name="colorSecondaryVariant">@color/navigation</item> <!-- Using the navigation color as the secondary variant -->
+        <item name="colorOnSecondary">@color/black</item> <!-- Text color on secondary background -->
+
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item> <!-- Using primary variant color for status bar -->
+
         <!-- Customize your theme here. -->
-    </style>
+    </style>>
 </resources>

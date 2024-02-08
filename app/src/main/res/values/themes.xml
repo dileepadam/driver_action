@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.YourAppTheme" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Theme.ZeroOneTechTheme" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/accent</item> <!-- Using the accent color as the primary color -->
         <item name="colorPrimaryVariant">@color/navigation</item> <!-- Using the navigation color as the primary variant -->
