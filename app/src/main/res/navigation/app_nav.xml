@@ -46,17 +46,17 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.damc.asignment_zero_one_tech.ui.register.RegisterFragment"
+        android:name="com.damc.asignment_zero_one_tech.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
-                <action
-                    android:id="@+id/action_register_to_loging"
-                    app:destination="@+id/launcherFragment"
-                    app:enterAnim="@anim/nav_default_enter_anim"
-                    app:exitAnim="@anim/nav_default_exit_anim"
-                    app:popEnterAnim="@anim/fade_in"
-                    app:popExitAnim="@anim/fade_out"
-                    app:popUpToInclusive="false" />
+<!--                <action-->
+<!--                    android:id="@+id/action_register_to_loging"-->
+<!--                    app:destination="@+id/launcherFragment"-->
+<!--                    app:enterAnim="@anim/nav_default_enter_anim"-->
+<!--                    app:exitAnim="@anim/nav_default_exit_anim"-->
+<!--                    app:popEnterAnim="@anim/fade_in"-->
+<!--                    app:popExitAnim="@anim/fade_out"-->
+<!--                    app:popUpToInclusive="false" />-->
     </fragment>
 
 </navigation>
