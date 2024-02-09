@@ -14,9 +14,13 @@ class LauncherViewModel(val database: LocalRepostories) : BaseViewModel() {
         navigate(LauncherFragmentDirections.actionLoginToRegister())
     }
 
+    fun loginToHome() {
+        navigate(LauncherFragmentDirections.actionLoginToHome())
+    }
+
     suspend fun isUserDetailsOk(username: String, password: String): Boolean {
         val user = database.userLogin(username, password)
-        if(user != null){
+        if (user != null) {
             AssignmentApplication().setLoginUser(user)
         }
         return user != null
@@ -28,6 +32,7 @@ class LauncherViewModel(val database: LocalRepostories) : BaseViewModel() {
                 showToast("Fields cannot be empty", context)
             } else if (isUserDetailsOk(username, password)) {
                 showToast("Login Successful", context)
+                loginToHome()
             } else {
                 showToast("Invalid Credentials", context)
             }

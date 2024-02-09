@@ -5,6 +5,7 @@ import com.damc.asignment_zero_one_tech.data.local.LocalRepositoryImpl
 import com.damc.asignment_zero_one_tech.data.local.room.DatabaseClient
 import com.damc.asignment_zero_one_tech.data.local.room.OnDataBaseActions
 import com.damc.asignment_zero_one_tech.domain.LocalRepostories
+import com.damc.asignment_zero_one_tech.ui.home.HomeViewModel
 import com.damc.asignment_zero_one_tech.ui.launcher.LauncherViewModel
 import com.damc.asignment_zero_one_tech.ui.register.RegisterViewModel
 import org.koin.android.ext.koin.androidContext
@@ -25,4 +26,5 @@ val appModule: Module = module {
 
     viewModel { LauncherViewModel(get()) }
     viewModel { RegisterViewModel(get()) }
+    viewModel { HomeViewModel() }
 }

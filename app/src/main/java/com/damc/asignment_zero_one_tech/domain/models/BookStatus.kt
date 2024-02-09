@@ -11,7 +11,9 @@ data class BookStatus(
     @ColumnInfo(name = "bookId")
     var bookId: Int,
     @ColumnInfo(name = "status")
-    var status: String
+    var status: String,
+    @ColumnInfo(name = "mark_favorite")
+    var markAsFavorite: Boolean
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "status_id")

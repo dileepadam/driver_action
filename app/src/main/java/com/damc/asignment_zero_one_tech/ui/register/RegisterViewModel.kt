@@ -15,7 +15,8 @@ class RegisterViewModel(val dataBase: LocalRepostories) : BaseViewModel() {
 
     lateinit var users: Users
     fun registerToLogin() {
-        navigateBack()
+        CoroutineScope(Dispatchers.Main).launch { navigateBack() }
+
     }
 
     fun addUerToDb(users: Users) {
@@ -45,6 +46,7 @@ class RegisterViewModel(val dataBase: LocalRepostories) : BaseViewModel() {
             users = Users(username, password)
             addUerToDb(users)// can use hashing for store password securely
             showToast("Successfully Registerer", context)
+            registerToLogin()
         }
     }
 
