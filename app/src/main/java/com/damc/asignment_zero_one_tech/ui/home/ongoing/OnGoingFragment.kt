@@ -1,4 +1,4 @@
-package com.damc.asignment_zero_one_tech.ui.home.homeMian
+package com.damc.asignment_zero_one_tech.ui.home.ongoing
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,28 +7,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.damc.asignment_zero_one_tech.R
-import com.damc.asignment_zero_one_tech.databinding.FragmentHomeMianBinding
+import com.damc.asignment_zero_one_tech.databinding.FragmentOnGoingBinding
 import com.damc.asignment_zero_one_tech.ui.BaseFragment
-import com.damc.asignment_zero_one_tech.ui.home.HomeViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
-class HomeMianFragment : BaseFragment<FragmentHomeMianBinding, HomeMianViewModel>() {
+class OnGoingFragment : BaseFragment<FragmentOnGoingBinding, OnGoingViewModel>() {
 
     companion object {
-        fun newInstance() = HomeMianFragment()
+        fun newInstance() = OnGoingFragment()
     }
-
-    override val layoutId: Int = R.layout.fragment_home_mian
-    override val viewModel: HomeMianViewModel
+    override val layoutId: Int = R.layout.fragment_on_going
+    override val viewModel: OnGoingViewModel
         get() {
-            val viewModel by activityViewModel<HomeMianViewModel>()
+            val viewModel by activityViewModel<OnGoingViewModel>()
             return viewModel
         }
 
     override fun onReady(savedInstanceState: Bundle?) {
 
     }
-
 
 
 }
