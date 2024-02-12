@@ -21,6 +21,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         }
 
     override fun onReady(savedInstanceState: Bundle?) {
+        requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
         changeFragment()
     }
 

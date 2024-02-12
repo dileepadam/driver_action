@@ -6,6 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "books")
 data class Books(
+    @ColumnInfo(name = "user_Id")
+    var user_Id: Int,
     @ColumnInfo(name = "name")
     var name: String,
     @ColumnInfo(name = "author")
@@ -18,8 +20,8 @@ data class Books(
     var category: String,
     @ColumnInfo(name = "language")
     var language: String
-){
+) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "book_id")
-    var bookId: Int=0
+    var bookId: Int = 0
 }

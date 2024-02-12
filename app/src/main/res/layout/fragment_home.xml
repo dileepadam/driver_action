@@ -39,8 +39,8 @@
 
         <FrameLayout
             android:id="@+id/id_fragment_container"
-            android:layout_width="349dp"
-            android:layout_height="590dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

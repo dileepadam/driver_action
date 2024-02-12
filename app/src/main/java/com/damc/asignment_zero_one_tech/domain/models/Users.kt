@@ -1,5 +1,6 @@
 package com.damc.asignment_zero_one_tech.domain.models
 
+import androidx.annotation.ColorInt
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey

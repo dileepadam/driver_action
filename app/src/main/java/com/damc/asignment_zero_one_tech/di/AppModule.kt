@@ -35,5 +35,5 @@ val appModule: Module = module {
     viewModel { CompletedViewModel() }
     viewModel { HomeViewModel() }
     viewModel { OnGoingViewModel() }
-    viewModel { HomeMianViewModel() }
+    viewModel { HomeMianViewModel(get()) }
 }

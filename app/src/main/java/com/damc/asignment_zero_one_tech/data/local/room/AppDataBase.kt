@@ -8,7 +8,7 @@ import com.damc.asignment_zero_one_tech.domain.models.Users
 
 @Database(
     entities = [Users::class, Books::class, BookStatus::class],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 abstract class AppDataBase : RoomDatabase() {

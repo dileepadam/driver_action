@@ -1,15 +1,12 @@
 package com.damc.asignment_zero_one_tech.ui.home.homeMian
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.damc.asignment_zero_one_tech.R
+import com.damc.asignment_zero_one_tech.app.AssignmentApplication
 import com.damc.asignment_zero_one_tech.databinding.FragmentHomeMianBinding
 import com.damc.asignment_zero_one_tech.ui.BaseFragment
-import com.damc.asignment_zero_one_tech.ui.home.HomeViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class HomeMianFragment : BaseFragment<FragmentHomeMianBinding, HomeMianViewModel>() {
@@ -26,9 +23,20 @@ class HomeMianFragment : BaseFragment<FragmentHomeMianBinding, HomeMianViewModel
         }
 
     override fun onReady(savedInstanceState: Bundle?) {
-
+        viewModel.getFavouriteBookCount((requireActivity().application as AssignmentApplication).getLoginUser().userId)
+        setView()
     }
 
-
+    fun setView() {
+        viewModel.favouriteCount.observe(this, Observer {
+            if (viewModel.favouriteCount.value == 0) {
+                binding.rvMyFavourite.visibility = View.GONE
+                binding.tvStatus.visibility = View.VISIBLE
+            } else {
+                binding.rvMyFavourite.visibility = View.VISIBLE
+                binding.tvStatus.visibility = View.GONE
+            }
+        })
+    }
 
 }

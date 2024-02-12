@@ -18,19 +18,28 @@ class LauncherViewModel(val database: LocalRepostories) : BaseViewModel() {
         navigate(LauncherFragmentDirections.actionLoginToHome())
     }
 
-    suspend fun isUserDetailsOk(username: String, password: String): Boolean {
+    suspend fun isUserDetailsOk(
+        username: String,
+        password: String,
+        application: AssignmentApplication
+    ): Boolean {
         val user = database.userLogin(username, password)
         if (user != null) {
-            AssignmentApplication().setLoginUser(user)
+            application.setLoginUser(user)
         }
         return user != null
     }
 
-    fun validateInputs(username: String, password: String, context: Context) {
+    fun validateInputs(
+        username: String,
+        password: String,
+        context: Context,
+        application: AssignmentApplication
+    ) {
         viewModelScope.launch {
             if (username.isEmpty() || password.isEmpty()) {
                 showToast("Fields cannot be empty", context)
-            } else if (isUserDetailsOk(username, password)) {
+            } else if (isUserDetailsOk(username, password, application)) {
                 showToast("Login Successful", context)
                 loginToHome()
             } else {

@@ -9,7 +9,7 @@ import org.koin.core.context.startKoin
 
 class AssignmentApplication : Application() {
 
-    lateinit var user: Users
+    var user: Users? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -26,7 +26,7 @@ class AssignmentApplication : Application() {
     }
 
     fun getLoginUser(): Users {
-        return user
+        return user!!
     }
 
 
