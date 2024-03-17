@@ -1,19 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.ZeroOneTechTheme" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Theme.DriverActivityTracker" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/accent</item> <!-- Using the accent color as the primary color -->
-        <item name="colorPrimaryVariant">@color/navigation</item> <!-- Using the navigation color as the primary variant -->
-        <item name="colorOnPrimary">@color/white</item> <!-- Text color on primary background -->
-
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimaryVariant">@color/yellow_700</item>
+        <item name="colorOnPrimary">@color/purple_700</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/background</item> <!-- Using the background color as the secondary color -->
-        <item name="colorSecondaryVariant">@color/navigation</item> <!-- Using the navigation color as the secondary variant -->
-        <item name="colorOnSecondary">@color/black</item> <!-- Text color on secondary background -->
-
+        <item name="colorSecondary">@color/yellow</item>
+        <item name="colorSecondaryVariant">@color/yellow_700</item>
+        <item name="colorOnSecondary">@color/purple_700</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item> <!-- Using primary variant color for status bar -->
-
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-    </style>>
+    </style>
 </resources>

@@ -9,16 +9,17 @@
 
         <variable
             name="viewmodel"
-            type="com.damc.asignment_zero_one_tech.ui.launcher.LauncherViewModel" />
+            type="com.damc.driver_action.ui.launcher.LauncherViewModel" />
 
         <variable
             name="fragment"
-            type="com.damc.asignment_zero_one_tech.ui.launcher.LauncherFragment" />
+            type="com.damc.driver_action.ui.launcher.LauncherFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:padding="16dp"
+        android:background="@color/purple_700"
         android:layout_height="match_parent">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -26,6 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="200dp"
+            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +35,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_username"
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username" />
@@ -43,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:background="@color/white"
             app:passwordToggleEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,6 +56,7 @@
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:inputType="textPassword"
                 android:hint="Password" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -73,6 +78,7 @@
             android:layout_height="wrap_content"
             android:text="If you don't have an account ?"
             android:layout_marginTop="20dp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bt_loging" />
@@ -93,8 +99,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="ZeroOneTech"
+            android:text="Driver Action Tracker"
             android:textSize="30dp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"

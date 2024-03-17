@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    namespace 'com.damc.asignment_zero_one_tech'
+    namespace 'com.damc.driver_action'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.damc.asignment_zero_one_tech"
-        minSdk 24
+        applicationId "com.damc.driver_action"
+        minSdk 26
         targetSdk 34
         versionCode 1
         versionName "1.0"
@@ -59,18 +59,7 @@ dependencies {
     //Dependency Injection
     implementation "io.insert-koin:koin-android:3.4.0"
     implementation "io.insert-koin:koin-androidx-navigation:3.4.0"
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
-    //Gson
-    implementation 'com.google.code.gson:gson:2.10.1'
-    //Image loading
-    implementation 'com.github.bumptech.glide:glide:4.15.1'
-    //circle image view
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
-    //Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.11.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
+
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
@@ -83,5 +72,28 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2'
 
     implementation 'androidx.room:room-ktx:2.6.1'
+
+    implementation 'com.google.android.gms:play-services-location:21.1.0'
+
+    implementation 'androidx.preference:preference-ktx:1.2.1'
+
+    // Timber
+
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+// Notification Library
+
+    implementation 'io.karn:notify:1.3.0'
+
+// Easy Permissions
+
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
+// Material Design
+
+    implementation 'com.google.android.material:material:1.12.0-alpha03'
+
+    // activity tracker
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
 
 }
