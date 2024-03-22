@@ -11,13 +11,8 @@
         android:icon="@drawable/ic_all"
         android:title="Summery"/>
     <item
-        android:id="@+id/it_ongoing"
+        android:id="@+id/it_settings"
         android:enabled="true"
-        android:icon="@drawable/ic_ongoing"
-        android:title="Ongoing"/>
-    <item
-        android:id="@+id/it_competed"
-        android:enabled="true"
-        android:icon="@drawable/ic_complete"
-        android:title="Completed"/>
+        android:icon="@drawable/ic_settings"
+        android:title="Settings"/>
 </menu>

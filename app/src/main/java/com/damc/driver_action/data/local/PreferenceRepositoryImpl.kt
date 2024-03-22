@@ -8,6 +8,7 @@ class PreferenceRepositoryImpl(private val sharedPreferences: SharedPreferences)
 
     private val FileKey = "com.damc.driver.a.x"
     private val USERNAME = FileKey + "a"
+    private val BIOMETRICS = FileKey + "b"
 
     private fun retrieveString(key: String): String {
         return sharedPreferences.getString(key, "")!!
@@ -38,6 +39,14 @@ class PreferenceRepositoryImpl(private val sharedPreferences: SharedPreferences)
 
     override fun getUsername(): String {
         return retrieveString(USERNAME)
+    }
+
+    override fun saveBiometricEnabled(biometricEnabled: Boolean) {
+        storeBoolean(BIOMETRICS, biometricEnabled)
+    }
+
+    override fun getBiometricEnabled(): Boolean {
+        return retrieveBoolean(BIOMETRICS)
     }
 
 

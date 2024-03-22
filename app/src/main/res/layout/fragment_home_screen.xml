@@ -8,11 +8,11 @@
 
         <variable
             name="viewmodel"
-            type="com.damc.driver_action.ui.home.HomeScreenViewModel" />
+            type="com.damc.driver_action.ui.homeBase.home.HomeScreenViewModel" />
 
         <variable
             name="fragment"
-            type="com.damc.driver_action.ui.home.HomeScreen" />
+            type="com.damc.driver_action.ui.homeBase.home.HomeScreen" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -105,146 +105,144 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/ll_velocity"
+                    android:id="@+id/ll_driver_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/rounded_layout"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
+                    android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
+                        android:id="@+id/ll_velocity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="left"
-                        android:padding="16dp"
-                        android:text="Velocity"
-                        android:textSize="15dp" />
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/rounded_layout"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
 
-                    <TextView
-                        android:id="@+id/tv_velocity"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:padding="16dp"
+                            android:text="Velocity"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/tv_velocity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:padding="16dp"
+                            android:text="N/A"
+                            android:textSize="15dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_acceleration"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:padding="16dp"
-                        android:text="N/A"
-                        android:textSize="15dp" />
-                </LinearLayout>
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/rounded_layout"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
 
-                <LinearLayout
-                    android:id="@+id/ll_acceleration"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/rounded_layout"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:padding="16dp"
+                            android:text="Acceleration"
+                            android:textSize="15dp" />
 
-                    <TextView
+                        <TextView
+                            android:id="@+id/tv_acceleration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:padding="16dp"
+                            android:text="N/A"
+                            android:textSize="15dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_hard_stop"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="left"
-                        android:padding="16dp"
-                        android:text="Acceleration"
-                        android:textSize="15dp" />
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/rounded_layout"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
 
-                    <TextView
-                        android:id="@+id/tv_acceleration"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:padding="16dp"
+                            android:text="Hard Stop Count"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/tv_hard_stop_count"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:padding="16dp"
+                            android:text="N/A"
+                            android:textSize="15dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_user_fast_acceleration"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:padding="16dp"
-                        android:text="N/A"
-                        android:textSize="15dp" />
-                </LinearLayout>
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/rounded_layout"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
 
-                <LinearLayout
-                    android:id="@+id/ll_hard_stop"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/rounded_layout"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:padding="16dp"
+                            android:text="Fast Acceleration Count"
+                            android:textSize="15dp" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="left"
-                        android:padding="16dp"
-                        android:text="Hard Stop Count"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:id="@+id/tv_hard_stop_count"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:padding="16dp"
-                        android:text="N/A"
-                        android:textSize="15dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_user_fast_acceleration"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/rounded_layout"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="left"
-                        android:padding="16dp"
-                        android:text="Fast Acceleration Count"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:id="@+id/tv_fast_acceleration"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:padding="16dp"
-                        android:text="N/A"
-                        android:textSize="15dp" />
+                        <TextView
+                            android:id="@+id/tv_fast_acceleration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:padding="16dp"
+                            android:text="N/A"
+                            android:textSize="15dp" />
+                    </LinearLayout>
                 </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/bt_summery"
+                    android:id="@+id/bt_rider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:onClick="@{fragment.onClickSummery}"
-                    android:text="Summery">
+                    android:text="Start Ride"
+                    android:visibility="visible">
 
                 </com.google.android.material.button.MaterialButton>
             </LinearLayout>
         </ScrollView>
-
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:menu="@menu/bottom_navigation_menu"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

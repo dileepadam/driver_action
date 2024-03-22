@@ -17,4 +17,8 @@ interface LocalRepostories {
     suspend fun updateAction(actionData: ActionData)
 
     suspend fun getUserActions(userID: Int): List<ActionData>
+
+    suspend fun upDateUserData(users: Users)
+
+    suspend fun userLoginBio(username: String): Users
 }

@@ -18,6 +18,9 @@ interface OnDataBaseActions {
     @Query("SELECT * FROM users WHERE username LIKE :username AND password LIKE :password LIMIT 1")
     suspend fun userLogin(username: String, password: String): Users
 
+    @Query("SELECT * FROM users WHERE username LIKE :username LIMIT 1")
+    suspend fun userLoginBio(username: String): Users
+
     @Query("SELECT * FROM action_data WHERE user_id LIKE :userID AND date LIKE :date LIMIT 1")
     suspend fun dateIsRegisteredInDb(userID: Int, date: String): ActionData
 
@@ -29,4 +32,7 @@ interface OnDataBaseActions {
 
     @Query("SELECT * FROM action_data WHERE user_id LIKE :userID")
     suspend fun getUserActions(userID: Int): List<ActionData>
+
+    @Update
+    suspend fun upDateUser(users: Users)
 }

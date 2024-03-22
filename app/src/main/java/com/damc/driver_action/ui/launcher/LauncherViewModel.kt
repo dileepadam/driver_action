@@ -8,6 +8,7 @@ import com.damc.driver_action.app.AssignmentApplication
 import com.damc.driver_action.domain.LocalRepostories
 import com.damc.driver_action.domain.PreferenceRepository
 import com.damc.driver_action.domain.models.ActionData
+import com.damc.driver_action.domain.models.Users
 import com.damc.driver_action.ui.BaseViewModel
 import com.damc.driver_action.utils.Utils
 import com.damc.driver_action.utils.Utils.Companion.showToast
@@ -30,9 +31,16 @@ class LauncherViewModel(
     suspend fun isUserDetailsOk(
         username: String,
         password: String,
+        biometrics: Boolean,
         application: AssignmentApplication
     ): Boolean {
-        val user = database.userLogin(username, password)
+        var user: Users? = null
+        if (biometrics) {
+            user = database.userLoginBio(username)
+        } else {
+            user = database.userLogin(username, password)
+        }
+
         if (user != null) {
             var actionData: ActionData? =
                 database.dateIsRegisteredInDb(user!!.userId, Utils.getCurrentDateAsString())
@@ -65,18 +73,32 @@ class LauncherViewModel(
         username: String,
         password: String,
         context: Context,
+        biometrics: Boolean,
         application: AssignmentApplication
     ) {
         viewModelScope.launch {
-            if (username.isEmpty() || password.isEmpty()) {
-                showToast("Fields cannot be empty", context)
-            } else if (isUserDetailsOk(username, password, application)) {
-                showToast("Login Successful", context)
-                preferenceRepository.saveUsername(username)
-                loginToHome()
+            if (!biometrics) {
+                if (username.isEmpty() || password.isEmpty()) {
+                    showToast("Fields cannot be empty", context)
+                } else if (isUserDetailsOk(username, password, biometrics, application)) {
+                    showToast("Login Successful", context)
+                    preferenceRepository.saveUsername(username)
+                    loginToHome()
+                } else {
+                    showToast("Invalid Credentials", context)
+                }
             } else {
-                showToast("Invalid Credentials", context)
+                if (username.isEmpty() ) {
+                    showToast("Username cannot be empty", context)
+                } else if (isUserDetailsOk(username, password, biometrics, application)) {
+                    showToast("Login Successful", context)
+                    preferenceRepository.saveUsername(username)
+                    loginToHome()
+                } else {
+                    showToast("Invalid Credentials", context)
+                }
             }
+
         }
     }
 

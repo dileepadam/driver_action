@@ -1,4 +1,4 @@
-package com.damc.driver_action.ui.home
+package com.damc.driver_action.ui.homeBase.home
 
 import android.Manifest
 import android.app.PendingIntent
@@ -47,6 +47,10 @@ class HomeScreen : BaseFragment<FragmentHomeScreenBinding, HomeScreenViewModel>(
 
     lateinit var locationManager: LocationManager
 
+    companion object {
+        fun newInstance() = HomeScreen()
+    }
+
 
     override val layoutId: Int
         get() = R.layout.fragment_home_screen
@@ -82,6 +86,7 @@ class HomeScreen : BaseFragment<FragmentHomeScreenBinding, HomeScreenViewModel>(
 
         setActivityClient()
 
+        binding.llDriverData.visibility = View.GONE
 
         activityTransitionReceiver = object : ActivityTransitionReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
@@ -93,11 +98,19 @@ class HomeScreen : BaseFragment<FragmentHomeScreenBinding, HomeScreenViewModel>(
                             binding.tvUserStatus.text =
                                 ActivityTransitionsUtil.toActivityString(event.activityType)
 
+                            if (binding.tvUserStatus.text != "IN VEHICLE") {
+                                binding.llDriverData.visibility = View.GONE
+                            } else {
+                                binding.llDriverData.visibility = View.VISIBLE
+                            }
+
+
                         }
                     }
                 }
             }
         }
+
 
         locationManager =
             requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -109,17 +122,13 @@ class HomeScreen : BaseFragment<FragmentHomeScreenBinding, HomeScreenViewModel>(
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            EasyPermissions.requestPermissions(
-                this,
-                "You need to allow Activity Transition Permissions in order to recognize your location",
+
+            requestPermissions(
+                arrayOf<String>(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ),
                 Constants.REQUEST_LOCATION_PERMISSION,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            )
-            EasyPermissions.requestPermissions(
-                this,
-                "You need to allow Activity Transition Permissions in order to recognize your location",
-                Constants.REQUEST_LOCATION_PERMISSION,
-                Manifest.permission.ACCESS_COARSE_LOCATION
             )
         } else {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0f, this)
@@ -161,13 +170,15 @@ class HomeScreen : BaseFragment<FragmentHomeScreenBinding, HomeScreenViewModel>(
         var strCurrentSpeed: String = fmt.toString()
         strCurrentSpeed = strCurrentSpeed.replace(' ', '0')
         var strUnits = "m/s"
-        viewModel.velocity.postValue(location?.speed)
-        binding.tvVelocity.text = "$strCurrentSpeed $strUnits"
         try {
-            if (viewModel.topSpeed < location?.speed!!) {
-                viewModel.topSpeed = location.speed
-                viewModel.actionData.highestSpeed = viewModel.topSpeed
-                viewModel.updateUserData(viewModel.actionData)
+            viewModel.velocity.postValue(location?.speed)
+            binding.tvVelocity.text = "$strCurrentSpeed $strUnits"
+            if (viewModel.isStartRide) {
+                if (viewModel.topSpeed < location?.speed!!) {
+                    viewModel.topSpeed = location.speed
+                    viewModel.actionData.highestSpeed = viewModel.topSpeed
+                    viewModel.updateUserData(viewModel.actionData)
+                }
             }
         } catch (e: Exception) {
 
@@ -201,10 +212,9 @@ class HomeScreen : BaseFragment<FragmentHomeScreenBinding, HomeScreenViewModel>(
                     Manifest.permission.ACCESS_COARSE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
-
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0f, this)
+                this.updateSpeed(null)
             }
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0f, this)
-            this.updateSpeed(null)
         }
 
     }
@@ -312,7 +322,6 @@ class HomeScreen : BaseFragment<FragmentHomeScreenBinding, HomeScreenViewModel>(
             this,
             "You need to allow Activity Transition Permissions in order to recognize your activities",
             Constants.REQUEST_CODE_ACTIVITY_TRANSITION,
-            Manifest.permission.ACTIVITY_RECOGNITION
         )
     }
 
@@ -348,8 +357,17 @@ class HomeScreen : BaseFragment<FragmentHomeScreenBinding, HomeScreenViewModel>(
     }
 
     fun onClickSummery(view: View) {
-        viewModel.updateUserData(viewModel.actionData)
-        viewModel.goToSummery()
+        if (!viewModel.isStartRide) {
+            binding.llDriverData.visibility = View.VISIBLE
+            binding.btRider.text = "Stop Ride"
+            binding.tvUserStatus.text = "Driving"
+        } else {
+            binding.llDriverData.visibility = View.GONE
+            binding.btRider.text = "Start Ride"
+            binding.tvUserStatus.text = "Waiting for google Service"
+        }
+
+        viewModel.isStartRide = !viewModel.isStartRide
     }
 
     override fun onDestroyView() {

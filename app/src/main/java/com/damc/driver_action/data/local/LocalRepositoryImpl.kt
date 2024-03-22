@@ -70,5 +70,23 @@ class LocalRepositoryImpl(val dataBase: OnDataBaseActions) : LocalRepostories {
         }
     }
 
+    override suspend fun upDateUserData(users: Users) {
+        try {
+            return dataBase.upDateUser(users)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            throw e
+        }
+    }
+
+    override suspend fun userLoginBio(username: String): Users {
+        try {
+            return dataBase.userLoginBio(username)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            throw e
+        }
+    }
+
 
 }

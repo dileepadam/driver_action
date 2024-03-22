@@ -1,4 +1,4 @@
-package com.damc.driver_action.ui.summerScreen
+package com.damc.driver_action.ui.homeBase.summerScreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

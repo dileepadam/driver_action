@@ -4,4 +4,8 @@ interface PreferenceRepository {
     fun saveUsername(username: String)
 
     fun getUsername(): String
+
+    fun saveBiometricEnabled(biometricEnabled: Boolean)
+
+    fun getBiometricEnabled(): Boolean
 }

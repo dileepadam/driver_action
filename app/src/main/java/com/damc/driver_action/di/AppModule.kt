@@ -10,10 +10,12 @@ import com.damc.driver_action.data.local.room.DatabaseClient
 import com.damc.driver_action.data.local.room.OnDataBaseActions
 import com.damc.driver_action.domain.LocalRepostories
 import com.damc.driver_action.domain.PreferenceRepository
-import com.damc.driver_action.ui.home.HomeScreenViewModel
+import com.damc.driver_action.ui.homeBase.HomeBaseViewModel
+import com.damc.driver_action.ui.homeBase.home.HomeScreenViewModel
+import com.damc.driver_action.ui.homeBase.settings.SettingsViewModel
+import com.damc.driver_action.ui.homeBase.summerScreen.SummeryViewModel
 import com.damc.driver_action.ui.launcher.LauncherViewModel
 import com.damc.driver_action.ui.register.RegisterViewModel
-import com.damc.driver_action.ui.summerScreen.SummeryViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -48,6 +50,8 @@ val appModule: Module = module {
 
     viewModel { LauncherViewModel(get(), get()) }
     viewModel { RegisterViewModel(get()) }
-    viewModel { HomeScreenViewModel(get(), get(), get()) }
+    viewModel { HomeScreenViewModel(get(), get()) }
     viewModel { SummeryViewModel(get()) }
+    viewModel { HomeBaseViewModel() }
+    viewModel { SettingsViewModel(get(), get()) }
 }

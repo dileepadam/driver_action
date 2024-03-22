@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
-import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -31,7 +30,7 @@ class Utils {
 
         private fun hasBiometricCapability(context: Context): Int {
             return BiometricManager.from(context)
-                .canAuthenticate(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
+                .canAuthenticate(BIOMETRIC_STRONG)
         }
 
         fun isBiometricReady(context: Context) =

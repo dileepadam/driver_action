@@ -9,4 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FFC107</color>
     <color name="yellow_700">#FFEB3B</color>
+
+    <color name="hard_stop">#A50038</color>
+    <color name="medium_stop">#FA1B67</color>
+    <color name="good_stop">#FA4A86</color>
+
+    <color name="hard_acceleration">#970F05</color>
+    <color name="medium_acceleration">#EC2D20</color>
+    <color name="good_acceleration">#FF756B</color>
 </resources>

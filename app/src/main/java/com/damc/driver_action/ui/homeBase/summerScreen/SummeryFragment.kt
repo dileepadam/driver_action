@@ -1,4 +1,4 @@
-package com.damc.driver_action.ui.summerScreen
+package com.damc.driver_action.ui.homeBase.summerScreen
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
@@ -8,6 +8,7 @@ import com.damc.driver_action.adapter.SummeryAdapter
 import com.damc.driver_action.app.AssignmentApplication
 import com.damc.driver_action.databinding.FragmentSummeryBinding
 import com.damc.driver_action.ui.BaseFragment
+import com.damc.driver_action.ui.homeBase.HomeBaseFragment
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class SummeryFragment : BaseFragment<FragmentSummeryBinding, SummeryViewModel>() {
@@ -21,6 +22,10 @@ class SummeryFragment : BaseFragment<FragmentSummeryBinding, SummeryViewModel>()
             val viewModel by activityViewModel<SummeryViewModel>()
             return viewModel
         }
+
+    companion object {
+        fun newInstance() = SummeryFragment()
+    }
 
 
     override fun onReady(savedInstanceState: Bundle?) {

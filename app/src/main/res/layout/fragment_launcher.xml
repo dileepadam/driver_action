@@ -59,7 +59,17 @@
                 android:background="@color/white"
                 android:inputType="textPassword"
                 android:hint="Password" />
+
+            <ImageView
+                android:id="@+id/im_biometrics"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:onClick="@{fragment.onClickBiometrics}"
+                app:srcCompat="@drawable/ic_biometrcis" />
         </com.google.android.material.textfield.TextInputLayout>
+
+
 
         <Button
             android:id="@+id/bt_loging"

@@ -46,22 +46,14 @@
 
     <fragment
         android:id="@+id/homeScreen"
-        android:name="com.damc.driver_action.ui.home.HomeScreen"
+        android:name="com.damc.driver_action.ui.homeBase.HomeBaseFragment"
         android:label="home_screen"
-        tools:layout="@layout/fragment_home_screen">
-                <action
-                    android:id="@+id/home_to_summery"
-                    app:destination="@+id/summery"
-                    app:enterAnim="@anim/nav_default_enter_anim"
-                    app:exitAnim="@anim/nav_default_exit_anim"
-                    app:popEnterAnim="@anim/fade_in"
-                    app:popExitAnim="@anim/fade_out"
-                    app:popUpToInclusive="false" />
+        tools:layout="@layout/fragment_home_base">
     </fragment>
 
     <fragment
         android:id="@+id/summery"
-        android:name="com.damc.driver_action.ui.summerScreen.SummeryFragment"
+        android:name="com.damc.driver_action.ui.homeBase.summerScreen.SummeryFragment"
         android:label="summery"
         tools:layout="@layout/fragment_summery">
         <!--        <action-->

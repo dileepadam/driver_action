@@ -9,11 +9,11 @@
 
         <variable
             name="viewmodel"
-            type="com.damc.driver_action.ui.summerScreen.SummeryViewModel" />
+            type="com.damc.driver_action.ui.homeBase.summerScreen.SummeryViewModel" />
 
         <variable
             name="fragment"
-            type="com.damc.driver_action.ui.summerScreen.SummeryFragment" />
+            type="com.damc.driver_action.ui.homeBase.summerScreen.SummeryFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
