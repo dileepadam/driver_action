@@ -4,11 +4,14 @@ import android.content.Context
 import android.os.Build
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
+import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 class Utils {
-    companion object{
+    companion object {
 
         fun validateEmail(email: String): Boolean {
             val emailRegex = Regex("^\\S+@\\S+\\.\\S+\$")
@@ -25,5 +28,13 @@ class Utils {
         fun showToast(message: String, context: Context) {
             Toast.makeText(context, message, Toast.LENGTH_LONG).show()
         }
+
+        private fun hasBiometricCapability(context: Context): Int {
+            return BiometricManager.from(context)
+                .canAuthenticate(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
+        }
+
+        fun isBiometricReady(context: Context) =
+            hasBiometricCapability(context) == BiometricManager.BIOMETRIC_SUCCESS
     }
 }

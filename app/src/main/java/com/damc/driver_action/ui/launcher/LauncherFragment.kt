@@ -22,6 +22,8 @@ class LauncherFragment : BaseFragment<FragmentLauncherBinding, LauncherViewModel
 
     override fun onReady(savedInstanceState: Bundle?) {
         requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
+        setUsername()
     }
 
     fun onClickRegister(view: View) {
@@ -35,6 +37,13 @@ class LauncherFragment : BaseFragment<FragmentLauncherBinding, LauncherViewModel
             binding.etPassword.text.toString(), requireContext(),
             requireActivity().application as AssignmentApplication
         )
+    }
+
+    fun setUsername() {
+        val username = viewModel.preferenceRepository.getUsername()
+        if (username.isNotEmpty()) {
+            binding.etUsername.setText(username)
+        }
     }
 
 

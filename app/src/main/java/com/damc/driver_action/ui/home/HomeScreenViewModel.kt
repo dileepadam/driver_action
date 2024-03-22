@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.damc.driver_action.accelerationHelper.Accelerometer
 import com.damc.driver_action.accelerationHelper.Gyroscope
-import com.damc.driver_action.common.Constants.FAST_OR_HARD_ACCELARATION
+import com.damc.driver_action.common.Constants.FAST_ACCELARATION
+import com.damc.driver_action.common.Constants.GOOD_ACCELARATION
+import com.damc.driver_action.common.Constants.MEDIUM_ACCELARATION
 import com.damc.driver_action.domain.LocalRepostories
 import com.damc.driver_action.domain.models.ActionData
 import com.damc.driver_action.ui.BaseViewModel
@@ -26,7 +28,12 @@ class HomeScreenViewModel(
     var topSpeed: Float = 0.0f
 
     lateinit var hardStopCount: MutableLiveData<Int>
+    var goodStopCount = 0
+    var mediumStopCount = 0
     lateinit var fastAccelerartionCount: MutableLiveData<Int>
+    var goodAccelerationCount = 0
+    var mediumAccelerationCount = 0
+
 
     fun checkFastAccOrHardStop() {
         val timer = object : CountDownTimer(1000, 10) {
@@ -35,14 +42,43 @@ class HomeScreenViewModel(
             }
 
             override fun onFinish() {
-                if ((acceleration.value?.minus(lastSecondAcceleration))!! > FAST_OR_HARD_ACCELARATION) {
-                    fastAccelerartionCount.postValue(fastAccelerartionCount.value?.plus(1))
-                    actionData.fastAcceleration = fastAccelerartionCount.value!!
-                }
+//                if ((acceleration.value?.minus(lastSecondAcceleration))!! > FAST_ACCELARATION) {
+//                    fastAccelerartionCount.postValue(fastAccelerartionCount.value?.plus(1))
+//                    actionData.fastAcceleration = fastAccelerartionCount.value!!
+//                }
+//
+//                if (lastSecondAcceleration.minus(acceleration.value!!)!! > FAST_ACCELARATION) {
+//                    hardStopCount.postValue(hardStopCount.value?.plus(1))
+//                    actionData.hardStopCount = hardStopCount.value!!
+//                }
 
-                if (lastSecondAcceleration.minus(acceleration.value!!)!! > FAST_OR_HARD_ACCELARATION) {
-                    hardStopCount.postValue(hardStopCount.value?.plus(1))
-                    actionData.hardStopCount = hardStopCount.value!!
+                when {
+                    (acceleration.value?.minus(lastSecondAcceleration))!! in GOOD_ACCELARATION..MEDIUM_ACCELARATION -> {
+                        actionData.goodAcceleration = goodAccelerationCount.plus(1)
+                    }
+
+                    (acceleration.value?.minus(lastSecondAcceleration))!! in MEDIUM_ACCELARATION..FAST_ACCELARATION -> {
+                        actionData.mediumAcceleration = mediumAccelerationCount.plus(1)
+                    }
+
+                    (acceleration.value?.minus(lastSecondAcceleration))!! > FAST_ACCELARATION -> {
+                        fastAccelerartionCount.postValue(fastAccelerartionCount.value?.plus(1))
+                        actionData.fastAcceleration = fastAccelerartionCount.value!!
+                    }
+
+                    lastSecondAcceleration.minus(acceleration.value!!) in GOOD_ACCELARATION..MEDIUM_ACCELARATION -> {
+                        actionData.goodStopCount = goodStopCount.plus(1)
+                    }
+
+                    lastSecondAcceleration.minus(acceleration.value!!) in MEDIUM_ACCELARATION..FAST_ACCELARATION -> {
+                        actionData.mediumStopCount = mediumStopCount.plus(1)
+                    }
+
+                    lastSecondAcceleration.minus(acceleration.value!!) > FAST_ACCELARATION -> {
+                        hardStopCount.postValue(hardStopCount.value?.plus(1))
+                        actionData.hardStopCount = hardStopCount.value!!
+                    }
+
                 }
 
                 lastSecondAcceleration = acceleration.value!!

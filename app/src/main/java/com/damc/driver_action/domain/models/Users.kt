@@ -10,6 +10,8 @@ data class Users(
     var username: String,
     @ColumnInfo(name = "password")
     var password: String,
+    @ColumnInfo(name = "biometrics_enabled")
+    var biometricsEnabled :Boolean
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "user_id")

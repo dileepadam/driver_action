@@ -42,7 +42,7 @@ class RegisterViewModel(val dataBase: LocalRepostories) : BaseViewModel() {
         } else if (checkUsernameInDb(username) > 0) {
             showToast("Username already taken", context)
         } else {
-            users = Users(username, password)
+            users = Users(username, password, false)
             addUerToDb(users)// can use hashing for store password securely
             showToast("Successfully Registerer", context)
             registerToLogin()

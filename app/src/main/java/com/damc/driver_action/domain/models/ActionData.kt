@@ -12,8 +12,16 @@ data class ActionData(
     var date: String,
     @ColumnInfo("hard_stop_count")
     var hardStopCount: Int,
+    @ColumnInfo("medium_stop_count")
+    var mediumStopCount: Int,
+    @ColumnInfo("good_stop_count")
+    var goodStopCount: Int,
     @ColumnInfo("fast_acceleration_count")
     var fastAcceleration: Int,
+    @ColumnInfo("medium_acceleration")
+    var mediumAcceleration: Int,
+    @ColumnInfo("good_acceleration")
+    var goodAcceleration: Int,
     @ColumnInfo("highest_speed")
     var highestSpeed: Float
 ) {

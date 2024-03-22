@@ -32,7 +32,8 @@ import com.google.android.gms.location.ActivityTransitionResult
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
-import java.util.*
+import java.util.Formatter
+import java.util.Locale
 
 
 class HomeScreen : BaseFragment<FragmentHomeScreenBinding, HomeScreenViewModel>(),
@@ -349,6 +350,11 @@ class HomeScreen : BaseFragment<FragmentHomeScreenBinding, HomeScreenViewModel>(
     fun onClickSummery(view: View) {
         viewModel.updateUserData(viewModel.actionData)
         viewModel.goToSummery()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.updateUserData(viewModel.actionData)
     }
 
 

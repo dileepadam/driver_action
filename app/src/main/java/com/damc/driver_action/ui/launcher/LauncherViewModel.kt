@@ -6,13 +6,17 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.viewModelScope
 import com.damc.driver_action.app.AssignmentApplication
 import com.damc.driver_action.domain.LocalRepostories
+import com.damc.driver_action.domain.PreferenceRepository
 import com.damc.driver_action.domain.models.ActionData
 import com.damc.driver_action.ui.BaseViewModel
 import com.damc.driver_action.utils.Utils
 import com.damc.driver_action.utils.Utils.Companion.showToast
 import kotlinx.coroutines.launch
 
-class LauncherViewModel(val database: LocalRepostories) : BaseViewModel() {
+class LauncherViewModel(
+    val database: LocalRepostories,
+    val preferenceRepository: PreferenceRepository
+) : BaseViewModel() {
 
     fun loginToRegister() {
         navigate(LauncherFragmentDirections.actionLoginToRegister())
@@ -40,7 +44,11 @@ class LauncherViewModel(val database: LocalRepostories) : BaseViewModel() {
                     userId = user.userId,
                     date = Utils.getCurrentDateAsString(),
                     hardStopCount = 0,
+                    goodStopCount = 0,
+                    mediumStopCount = 0,
                     fastAcceleration = 0,
+                    goodAcceleration = 0,
+                    mediumAcceleration = 0,
                     highestSpeed = 0.0F,
                 )
                 database.insertAction(
@@ -64,6 +72,7 @@ class LauncherViewModel(val database: LocalRepostories) : BaseViewModel() {
                 showToast("Fields cannot be empty", context)
             } else if (isUserDetailsOk(username, password, application)) {
                 showToast("Login Successful", context)
+                preferenceRepository.saveUsername(username)
                 loginToHome()
             } else {
                 showToast("Invalid Credentials", context)
