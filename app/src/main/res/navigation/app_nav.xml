@@ -51,20 +51,7 @@
         tools:layout="@layout/fragment_home_base">
     </fragment>
 
-    <fragment
-        android:id="@+id/summery"
-        android:name="com.damc.driver_action.ui.homeBase.summerScreen.SummeryFragment"
-        android:label="summery"
-        tools:layout="@layout/fragment_summery">
-        <!--        <action-->
-        <!--            android:id="@+id/action_register_to_loging"-->
-        <!--            app:destination="@+id/launcherFragment"-->
-        <!--            app:enterAnim="@anim/nav_default_enter_anim"-->
-        <!--            app:exitAnim="@anim/nav_default_exit_anim"-->
-        <!--            app:popEnterAnim="@anim/fade_in"-->
-        <!--            app:popExitAnim="@anim/fade_out"-->
-        <!--            app:popUpToInclusive="false" />-->
-    </fragment>
+
 
 
 

@@ -41,7 +41,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/rounded_layout"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,6 +52,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Enable Biometrics"
+                android:layout_gravity="clip_vertical">
+
+            </CheckBox>
+
+            <CheckBox
+                android:id="@+id/cb_driver_tracking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Disable Driver Trcking"
                 android:layout_gravity="clip_vertical">
 
             </CheckBox>

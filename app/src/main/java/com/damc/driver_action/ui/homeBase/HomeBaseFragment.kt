@@ -49,6 +49,10 @@ class HomeBaseFragment : BaseFragment<FragmentHomeBaseBinding, HomeBaseViewModel
                 setCurrentFragment(SettingsFragment.newInstance())
                 return true
             }
+
+            R.id.it_logout -> {
+                viewModel.logOut()
+            }
         }
         return true
     }

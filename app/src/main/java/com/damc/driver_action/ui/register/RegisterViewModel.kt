@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.viewModelScope
 import com.damc.driver_action.domain.LocalRepostories
+import com.damc.driver_action.domain.PreferenceRepository
 import com.damc.driver_action.domain.models.Users
 import com.damc.driver_action.ui.BaseViewModel
 import com.damc.driver_action.utils.Utils
@@ -11,7 +12,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RegisterViewModel(val dataBase: LocalRepostories) : BaseViewModel() {
+class RegisterViewModel(
+    val dataBase: LocalRepostories,
+    val preferenceRepository: PreferenceRepository
+) : BaseViewModel() {
 
     lateinit var users: Users
     fun registerToLogin() {
@@ -44,6 +48,7 @@ class RegisterViewModel(val dataBase: LocalRepostories) : BaseViewModel() {
         } else {
             users = Users(username, password, false)
             addUerToDb(users)// can use hashing for store password securely
+            preferenceRepository.saveUsername(username)
             showToast("Successfully Registerer", context)
             registerToLogin()
         }
